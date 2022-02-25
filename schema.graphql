@@ -1,0 +1,7 @@
+type Relayer @entity {
+  id: ID!
+  address: Bytes!
+  ensName: String!
+  ensHash: Bytes!
+  blockRegistration: BigInt!
+}

@@ -1,0 +1,35 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: RelayerRegistry
+    network: mainnet
+    source:
+      address: "0x58E8dCC13BE9780fC42E8723D8EaD4CF46943dF2"
+      abi: RelayerRegistry
+      startBlock: 14173129
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Relayer
+        # - Worker
+      abis:
+        - name: RelayerRegistry
+          file: ./abis/RelayerRegistry.json
+      eventHandlers:
+        # - event: RelayerBalanceNullified(address)
+        #   handler: handleRelayerBalanceNullified
+        # - event: WorkerRegistered(address,address)
+        #   handler: handleWorkerRegistered
+        # - event: WorkerUnregistered(address,address)
+        #   handler: handleWorkerUnregistered
+        # - event: StakeAddedToRelayer(address,uint256)
+        #   handler: handleStakeAddedToRelayer
+        # - event: StakeBurned(address,uint256)
+        #   handler: handleStakeBurned
+        - event: RelayerRegistered(bytes32,string,address,uint256)
+          handler: handleRelayerRegistered
+      file: ./src/mapping.ts
